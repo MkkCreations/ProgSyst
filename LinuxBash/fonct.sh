@@ -9,7 +9,7 @@ function pause {
 function exist_user { 
  echo -n "Saisir le nom d'un utilisateur : "  # bash 
  read user 
- if grep -q "^$user:" /etc/passwd ; then 
+ if grep -q "^$user" /Users  ; then 
    return 0 
  fi 
  return 1  

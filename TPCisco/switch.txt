@@ -1,0 +1,45 @@
+no ip domain-lookup
+clock timezone CET
+clock summer-time CET recurring
+!
+! 
+configure terminal
+hostname Switch
+!
+!
+banner motd Acces Interdit
+!
+!
+console secret cisco
+!
+!
+enable secret cisco
+!
+!
+!
+!
+no service password-encryption
+!
+!
+interface Vlan 1
+ip address 1.1.1.1/2
+!
+!
+ip domain-name tp.local
+!
+!
+crypto key generate rsa general-keys modulus  444
+!
+!
+username root privilege 15 secret toor
+!
+!
+line vty 0 9
+transport input ssh
+!
+!
+show ip interface brief
+Interface        IP-Address  OK?  Method  Status  Protocol
+FastEthernet0/0  unassigned  YES  manual  down    up
+FastEthernet0/1  unassigned  YES  manual  down    down
+Serial0/0        unassigned  YES  manual  down    up
