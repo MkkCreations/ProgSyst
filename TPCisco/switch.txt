@@ -7,10 +7,10 @@ configure terminal
 hostname Switch
 !
 !
-banner motd Acces Interdit
+banner motd Fuck You
 !
 !
-console secret cisco
+console secret hulk
 !
 !
 enable secret cisco
@@ -18,23 +18,23 @@ enable secret cisco
 !
 !
 !
-no service password-encryption
+service password-encryption
 !
 !
 interface Vlan 1
-ip address 1.1.1.1/2
+ip address 123.123.123.123/22
 !
 !
-ip domain-name tp.local
+ip domain-name but.info
 !
 !
 crypto key generate rsa general-keys modulus  444
 !
 !
-username root privilege 15 secret toor
+username Mohamed privilege 15 secret jetaime
 !
 !
-line vty 0 9
+line vty 2 4
 transport input ssh
 !
 !

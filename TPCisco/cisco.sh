@@ -2,7 +2,7 @@
 
 
 function config() { 
-    echo -n "activer 'no ip domain-lookup' (O/n) " 
+    echo -n "$(tput setaf 2) activer 'no ip domain-lookup' (O/n) $(tput setaf 4) " 
     read x 
     case $x in 
         o|O) 
@@ -16,19 +16,21 @@ function config() {
         ;; 
     esac
 
-    echo "réglage de la date et l'heure identiques à celles de votre système Linux"
+    echo "$(tput setaf 2)réglage de la date et l'heure identiques à celles de votre système Linux"
     echo "clock timezone `date +%Z`" >> $1.txt
     echo "clock summer-time `date +%Z` recurring" >> $1.txt
 
     echo -e '!\n! \nconfigure terminal' >> $1.txt
 
     while true; do
-        echo -n "Nom du switch: "
+        echo -n "Nom du Hôte: $(tput setaf 4)"
         read hote
         if [[ $hote =~ ^[0-9] ]]; then
-            echo "Le nom ne peut pas commencer par un chiffre"
-        elif [ -z $hote ]; then
-            echo "hostname Switch" >> $1.txt
+            echo "$(tput setaf 1)Le nom ne peut pas commencer par un chiffre"
+        elif (( ${#hote} > 64 )); then
+            echo "$(tput setaf 1)Le nom ne peut pas dépasser 64 caractères"
+        elif [[ -z $hote ]]; then
+            echo "hostname $1" >> $1.txt
             break
         else
             echo "hostname $hote" >> $1.txt
@@ -38,17 +40,17 @@ function config() {
 
     echo -e '!\n!' >> $1.txt
 
-    echo -n "Bannière: "
+    echo -n "$(tput setaf 2)Bannière: $(tput setaf 4) "
     read banniere
-    if [ -z $banniere ]; then
-        echo "banner motd Acces Interdit" >> $1.txt
+    if [[ -z $banniere ]]; then
+        echo "$(tput setaf 1)banner motd Acces Interdit" >> $1.txt
     else
         echo "banner motd $banniere" >> $1.txt
     fi
 
     echo -e '!\n!' >> $1.txt
 
-    echo -n "Mot de passe pour Console (cisco): "
+    echo -n "$(tput setaf 2)Mot de passe pour Console (cisco): $(tput setaf 4) "
     read pwdConsole 
     if [ -z $pwdConsole ];  then
         echo "console secret cisco" >> $1.txt
@@ -58,7 +60,7 @@ function config() {
 
     echo -e '!\n!' >> $1.txt
 
-    echo -n "Mot de passe pour Enable (cisco): "
+    echo -n "$(tput setaf 2)Mot de passe pour Enable (cisco): $(tput setaf 4) "
     read pwdPrivilege
     if [ -z $pwdPrivilege ];  then
         echo "enable secret cisco" >> $1.txt
@@ -68,7 +70,7 @@ function config() {
 
     echo -e '!\n!' >> $1.txt
 
-    echo -n "VTY 0 4 (cisco) (O/n) "
+    echo -n "$(tput setaf 2) VTY 0 4 (cisco) (O/n) $(tput setaf 4) "
     read vty
     case $vty in
         o|O)
@@ -78,7 +80,7 @@ function config() {
         n|N)
             vty "$1"
             
-            echo -n "Mot de passe pour VTY (cisco): "
+            echo -n $(tput setaf 2) "Mot de passe pour VTY (cisco): $(tput setaf 4) "
             read pwdVty
             if [ -z $pwdVty ];  then
                 echo "password cisco" >> $1.txt
@@ -90,7 +92,7 @@ function config() {
 
     echo -e '!\n!' >> $1.txt
 
-    echo -n "Chiffrement des mdp ? (o/N)"
+    echo -n "$(tput setaf 2) Chiffrement des mdp ? (o/N) $(tput setaf 4) "
     read crypt
     case $crypt in
         o|O)
@@ -107,7 +109,7 @@ function config() {
     echo -e '!\n!' >> $1.txt
 
     while true; do
-        echo -n "Adresse IP et masque (Vlan 1) (ip/mask) : "
+        echo -n "$(tput setaf 2) Adresse IP et masque (Vlan 1) (ip/mask) : $(tput setaf 4) "
         read vlan
         ip=$(echo -n $vlan | cut -d '/' -f 1)
         m=$(echo -n $vlan | cut -d '/' -f 2)
@@ -116,13 +118,13 @@ function config() {
             echo "ip address $ip/$m" >> $1.txt
             break
         else
-            echo "Nombre invalide"
+            echo "$(tput setaf 1) Nombre invalide"
         fi
     done
 
     echo -e '!\n!' >> $1.txt
 
-    echo -n "Activer le SSH ? (o/N) "
+    echo -n "$(tput setaf 2) Activer le SSH ? (o/N) $(tput setaf 4) "
     read ssh
     case $ssh in
         o|O)
@@ -140,7 +142,7 @@ function config() {
 
 function vty() {
    while true; do
-    echo -n "VTY (0 4)[0-15]: "
+    echo -n "$(tput setaf 2) VTY (0 4)[0-15]: $(tput setaf 4) "
     read vty
     if [[ $vty =~ ^[0-9]+\ [0-9]+$ ]]; then
         val1=$(echo $vty | cut -d' ' -f1)
@@ -151,13 +153,13 @@ function vty() {
                 echo "line vty $val1 $val2" >> $1.txt
                 break
             else
-                echo "Le premier valeur doit être inférieur au deuxième"
+                echo "$(tput setaf 1) Le premier valeur doit être inférieur au deuxième"
             fi
         else
-            echo "Les valeurs doivent être comprises entre 0 et 15"
+            echo "$(tput setaf 1) Les valeurs doivent être comprises entre 0 et 15"
         fi
     else
-        echo "Les valeurs doivent être comprises entre 0 et 15 avec un espace entre les deux valeurs"
+        echo "$(tput setaf 1) Les valeurs doivent être comprises entre 0 et 15 avec un espace entre les deux valeurs"
     fi
 done
 }
@@ -165,7 +167,7 @@ done
 
 function sshConfig() {
     while true; do
-        echo -n "Nom de domaine de ssh (tp.local): "
+        echo -n "$(tput setaf 2) Nom de domaine de ssh (tp.local): $(tput setaf 4) "
         read domaine
         if [ -z $domaine ]; then
             echo "ip domain-name tp.local" >> $1.txt
@@ -179,28 +181,28 @@ function sshConfig() {
     echo -e '!\n!' >> $1.txt
 
     while true; do
-        echo -n "Nom de modulus SSH [360-2048]: "
+        echo -n "$(tput setaf 2) Nom de modulus SSH [360-2048]: $(tput setaf 4) "
         read modulus
         if [[ $modulus -ge 360 && $modulus -le 2048 ]]; then
             echo "crypto key generate rsa general-keys modulus  $modulus" >> $1.txt
             break
         else
-            echo "Le modulus doit être compris entre 360 et 2048"
+            echo "$(tput setaf 1) Le modulus doit être compris entre 360 et 2048"
         fi
     done
 
     echo -e '!\n!' >> $1.txt
 
     while true; do
-        echo -n "Username: "
+        echo -n "$(tput setaf 2) Username: $(tput setaf 4) "
         read utilisateur
         if [ -z $utilisateur ]; then
-            echo "Invalid username"
+            echo "$(tput setaf 1) Invalid username"
         else
-            echo -n "Password: "
+            echo -n "$(tput setaf 2) Password: $(tput setaf 4) "
             read passw
             if [ -z $passw ]; then
-                echo "Invalid password"
+                echo "$(tput setaf 1) Invalid password"
             else
                 echo "username $utilisateur privilege 15 secret $passw" >> $1.txt
                 break
@@ -230,12 +232,12 @@ function showInterface() {
 
 
 function main() {
-    echo "Bienvenue dans le script de configuration de switch Cisco"
+    echo "$(tput setaf 3) Bienvenue dans le script de configuration de switch Cisco"
     echo "Veuillez choisir le type de Dispositif"
-    echo "1 - Switch"
-    echo "2 - Routeur"
-    echo "4 - Quitter"
-    echo -n "Votre choix: "
+    echo "$(tput setaf 5) 1 - Switch"
+    echo "$(tput setaf 6) 2 - Routeur"
+    echo "$(tput setaf 1) 4 - Quitter"
+    echo -n "$(tput setaf 3) Votre choix: "
     read choix
     case $choix in
         1) 
