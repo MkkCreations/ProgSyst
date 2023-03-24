@@ -43,3 +43,547 @@ Interface        IP-Address  OK?  Method  Status  Protocol
 FastEthernet0/0  unassigned  YES  manual  down    up
 FastEthernet0/1  unassigned  YES  manual  down    down
 Serial0/0        unassigned  YES  manual  down    up
+no ip domain-lookup
+clock timezone CET
+clock summer-time CET recurring
+!
+! 
+configure terminal
+no ip domain-lookup
+clock timezone CET
+clock summer-time CET recurring
+!
+! 
+configure terminal
+no ip domain-lookup
+clock timezone CET
+clock summer-time CET recurring
+!
+! 
+configure terminal
+hostname switch
+!
+!
+no ip domain-lookup
+clock timezone CET
+clock summer-time CET recurring
+!
+! 
+configure terminal
+hostname 234asd
+!
+!
+no ip domain-lookup
+clock timezone CET
+clock summer-time CET recurring
+!
+! 
+configure terminal
+hostname 234wef
+!
+!
+no ip domain-lookup
+clock timezone CET
+clock summer-time CET recurring
+!
+! 
+configure terminal
+no ip domain-lookup
+clock timezone CET
+clock summer-time CET recurring
+!
+! 
+configure terminal
+hostname er
+!
+!
+no ip domain-lookup
+clock timezone CET
+clock summer-time CET recurring
+!
+! 
+configure terminal
+hostname Asd
+!
+!
+no ip domain-lookup
+clock timezone CET
+clock summer-time CET recurring
+!
+! 
+configure terminal
+hostname wef
+!
+!
+no ip domain-lookup
+clock timezone CET
+clock summer-time CET recurring
+!
+! 
+configure terminal
+hostname ADasds
+!
+!
+[31mbanner motd Acces Interdit
+!
+!
+console secret cisco
+!
+!
+enable secret cisco
+!
+!
+!
+!
+no service password-encryption
+!
+!
+interface Vlan 1
+ip address 123.222.123.123/12
+!
+!
+no ip domain-lookup
+clock timezone CET
+clock summer-time CET recurring
+!
+! 
+configure terminal
+hostname qwe
+!
+!
+[31mbanner motd Acces Interdit
+!
+!
+console secret cisco
+!
+!
+enable secret cisco
+!
+!
+!
+!
+no service password-encryption
+!
+!
+interface Vlan 1
+ip address 123.123.123.222/12
+!
+!
+no ip domain-lookup
+clock timezone CET
+clock summer-time CET recurring
+!
+! 
+configure terminal
+hostname qwe
+!
+!
+[31mbanner motd Acces Interdit
+!
+!
+console secret cisco
+!
+!
+enable secret cisco
+!
+!
+!
+!
+no service password-encryption
+!
+!
+no ip domain-lookup
+clock timezone CET
+clock summer-time CET recurring
+!
+! 
+configure terminal
+hostname qwe
+!
+!
+[31mbanner motd Acces Interdit
+!
+!
+console secret qweqw
+!
+!
+enable secret qeq
+!
+!
+no ip domain-lookup
+clock timezone CET
+clock summer-time CET recurring
+!
+! 
+configure terminal
+hostname qwe
+!
+!
+[31mbanner motd Acces Interdit
+!
+!
+console secret qewqe
+!
+!
+enable secret qwe
+!
+!
+no ip domain-lookup
+clock timezone CET
+clock summer-time CET recurring
+!
+! 
+configure terminal
+hostname qwe
+!
+!
+[31mbanner motd Acces Interdit
+!
+!
+console secret qweqe
+!
+!
+enable secret qwe
+!
+!
+no ip domain-lookup
+clock timezone CET
+clock summer-time CET recurring
+!
+! 
+configure terminal
+hostname qe
+!
+!
+[31mbanner motd Acces Interdit
+!
+!
+console secret qweqwe
+!
+!
+enable secret qwe
+!
+!
+no ip domain-lookup
+clock timezone CET
+clock summer-time CET recurring
+!
+! 
+configure terminal
+hostname qwe
+!
+!
+[31mbanner motd Acces Interdit
+!
+!
+console secret qweqwe
+!
+!
+enable secret qwe
+!
+!
+no ip domain-lookup
+clock timezone CET
+clock summer-time CET recurring
+!
+! 
+configure terminal
+hostname eqw
+!
+!
+banner motd qqw
+!
+!
+console secret qwewq
+!
+!
+enable secret qwe
+!
+!
+no ip domain-lookup
+clock timezone CET
+clock summer-time CET recurring
+!
+! 
+configure terminal
+hostname qwe
+!
+!
+[31mbanner motd Acces Interdit
+!
+!
+console secret qweqwe
+!
+!
+enable secret qe
+!
+!
+no ip domain-lookup
+clock timezone CET
+clock summer-time CET recurring
+!
+! 
+configure terminal
+hostname adwq
+!
+!
+banner motd qw
+!
+!
+console secret qweqweqw
+!
+!
+no ip domain-lookup
+clock timezone CET
+clock summer-time CET recurring
+!
+! 
+configure terminal
+hostname qwe
+!
+!
+[31mbanner motd Acces Interdit
+!
+!
+console secret qweqwe
+!
+!
+enable secret qweqwe
+!
+!
+no ip domain-lookup
+clock timezone CET
+clock summer-time CET recurring
+!
+! 
+configure terminal
+hostname qweq
+!
+!
+[31mbanner motd Acces Interdit
+!
+!
+console secret qewqewq
+!
+!
+enable secret qwewq
+!
+!
+no ip domain-lookup
+clock timezone CET
+clock summer-time CET recurring
+!
+! 
+configure terminal
+hostname qwe
+!
+!
+[31mbanner motd Acces Interdit
+!
+!
+console secret qwewqe
+!
+!
+enable secret qew
+!
+!
+no ip domain-lookup
+clock timezone CET
+clock summer-time CET recurring
+!
+! 
+configure terminal
+hostname qw
+!
+!
+[31mbanner motd Acces Interdit
+!
+!
+console secret qweqwe
+!
+!
+no ip domain-lookup
+clock timezone CET
+clock summer-time CET recurring
+!
+! 
+configure terminal
+hostname qe
+!
+!
+[31mbanner motd Acces Interdit
+!
+!
+console secret qwewqe
+!
+!
+enable secret qweqw
+!
+!
+no ip domain-lookup
+clock timezone CET
+clock summer-time CET recurring
+!
+! 
+configure terminal
+hostname qed
+!
+!
+[31mbanner motd Acces Interdit
+!
+!
+console secret sdfsdf
+!
+!
+enable secret sdfds
+!
+!
+no ip domain-lookup
+clock timezone CET
+clock summer-time CET recurring
+!
+! 
+configure terminal
+hostname eqwe
+!
+!
+[31mbanner motd Acces Interdit
+!
+!
+console secret qewqe
+!
+!
+enable secret qwewqe
+!
+!
+!
+!
+no service password-encryption
+!
+!
+no ip domain-lookup
+clock timezone CET
+clock summer-time CET recurring
+!
+! 
+configure terminal
+hostname qwe
+!
+!
+[31mbanner motd Acces Interdit
+!
+!
+console secret cisco
+!
+!
+enable secret qw
+!
+!
+line vty 0 0
+password qwe
+!
+!
+no service password-encryption
+!
+!
+no ip domain-lookup
+clock timezone CET
+clock summer-time CET recurring
+!
+! 
+configure terminal
+no ip domain-lookup
+clock timezone CET
+clock summer-time CET recurring
+!
+! 
+configure terminal
+hostname Switch
+!
+!
+[31mbanner motd Acces Interdit
+!
+!
+console secret class
+!
+!
+enable secret cisco
+!
+!
+no ip domain-lookup
+clock timezone CET
+clock summer-time CET recurring
+!
+! 
+configure terminal
+hostname switch
+!
+!
+[31mbanner motd Acces Interdit
+!
+!
+console secret cisco
+!
+!
+enable secret cisco
+!
+!
+line vty 2 4
+password cisco
+!
+!
+no service password-encryption
+!
+!
+no ip domain-lookup
+clock timezone CET
+clock summer-time CET recurring
+!
+! 
+configure terminal
+hostname Switch
+!
+!
+[31mbanner motd Acces Interdit
+!
+!
+console secret cisco
+!
+!
+enable secret cisco
+!
+!
+line vty 0 4
+password cisco
+!
+!
+service password-encryption
+!
+!
+interface Vlan 1
+ip address 123.212.0.1/24
+!
+!
+ip domain-name tp.local
+!
+!
+crypto key generate rsa general-keys modulus  444
+!
+!
+username $rf privilege 15 secret werwe
+!
+!
+line vty 3 4
+transport input ssh
+!
+!
+show ip interface brief
+no ip domain-lookup
+clock timezone CET
+clock summer-time CET recurring
+!
+! 
+configure terminal
+hostname e qwe
+!
+!

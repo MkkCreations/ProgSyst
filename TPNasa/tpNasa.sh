@@ -44,3 +44,5 @@
 #Ex 10
 #En repartant du fichier log d'origine pouvez-vous dire combien il y a eu de connexion pour chacune des journées du mois concerné ?
     awk '{print $4 $5}' logsNasa.log | sed 's/.*\[//; s/\:.*//' | uniq -c
+
+    

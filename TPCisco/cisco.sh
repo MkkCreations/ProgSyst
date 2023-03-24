@@ -25,7 +25,7 @@ function config() {
     while true; do
         echo -n "Nom du Hôte: $(tput setaf 4)"
         read hote
-        if [[ $hote =~ ^[0-9] ]]; then
+        if [[ $hote != [a-zA-Z]* ]]; then
             echo "$(tput setaf 1)Le nom ne peut pas commencer par un chiffre"
         elif (( ${#hote} > 64 )); then
             echo "$(tput setaf 1)Le nom ne peut pas dépasser 64 caractères"
@@ -50,8 +50,8 @@ function config() {
 
     echo -e '!\n!' >> $1.txt
 
-    echo -n "$(tput setaf 2)Mot de passe pour Console (cisco): $(tput setaf 4) "
-    read pwdConsole 
+    echo  -n "$(tput setaf 2)Mot de passe pour Console (cisco): $(tput setaf 4) "
+    read -s pwdConsole 
     if [ -z $pwdConsole ];  then
         echo "console secret cisco" >> $1.txt
     else
@@ -60,8 +60,8 @@ function config() {
 
     echo -e '!\n!' >> $1.txt
 
-    echo -n "$(tput setaf 2)Mot de passe pour Enable (cisco): $(tput setaf 4) "
-    read pwdPrivilege
+    echo -n -e "\n$(tput setaf 2)Mot de passe pour Enable (cisco): $(tput setaf 4) "
+    read -s pwdPrivilege
     if [ -z $pwdPrivilege ];  then
         echo "enable secret cisco" >> $1.txt
     else
@@ -70,29 +70,30 @@ function config() {
 
     echo -e '!\n!' >> $1.txt
 
-    echo -n "$(tput setaf 2) VTY 0 4 (cisco) (O/n) $(tput setaf 4) "
+    echo -n -e "\n$(tput setaf 2) VTY 0 4 (cisco) (O/n) $(tput setaf 4) "
     read vty
     case $vty in
         o|O)
             echo "line vty 0 4" >> $1.txt
             echo "password cisco" >> $1.txt
         ;;
-        n|N)
+        n|N|*)
             vty "$1"
             
-            echo -n $(tput setaf 2) "Mot de passe pour VTY (cisco): $(tput setaf 4) "
-            read pwdVty
+            echo -n -e "\n$(tput setaf 2) Mot de passe pour VTY (cisco): $(tput setaf 4) "
+            read -s pwdVty
             if [ -z $pwdVty ];  then
                 echo "password cisco" >> $1.txt
             else
                 echo "password $pwdVty" >> $1.txt
             fi
         ;;
+
     esac
 
     echo -e '!\n!' >> $1.txt
 
-    echo -n "$(tput setaf 2) Chiffrement des mdp ? (o/N) $(tput setaf 4) "
+    echo -n -e "\n$(tput setaf 2) Chiffrement des mdp ? (o/N) $(tput setaf 4) "
     read crypt
     case $crypt in
         o|O)
@@ -113,7 +114,7 @@ function config() {
         read vlan
         ip=$(echo -n $vlan | cut -d '/' -f 1)
         m=$(echo -n $vlan | cut -d '/' -f 2)
-        if [[ $ip =~  ((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\.|$)){4} ]] && [[ $m =~ ([0-32]) ]]; then
+        if [[ $ip =~  ^(([01]?[0-9]{1,2}|2[0-4][0-9]|25[0-4])\.){2}([01]?[0-9]{1,2}|2[0-4][0-9]|25[0-3])\.([01]?[0-9]{1,2}|2[0-4][0-9]|25[0-4])$ ]] && [[ $m =~ ([0-32]) ]]; then
             echo "interface Vlan 1" >> $1.txt
             echo "ip address $ip/$m" >> $1.txt
             break
@@ -224,7 +225,6 @@ function showInterface() {
         Serial0/0 unassigned YES manual down up "
 
     echo "show ip interface brief" >> $1.txt
-    echo "$interfaces" | column -t >> $1.txt
     echo -e '!\n!'
     echo "show ip interface brief"
     echo "$interfaces" | column -t
